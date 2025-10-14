@@ -1,0 +1,15 @@
+services:
+  go-web-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tsadekun/go-web-app:v1
+    container_name: go-web-app
+    ports:
+      - "80:8080"             # Host:Container port mapping
+    restart: always
+    environment:
+      - ENV=production
+      - PORT=8080
+    volumes:
+      - ./static:/app/static  # Optional: live-mount static files during development
